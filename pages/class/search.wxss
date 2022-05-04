@@ -1,0 +1,5 @@
+/**index.wxss**/
+page{
+  min-height: 100%;  
+}
+.van-cell__title{margin-left: 50rpx;}

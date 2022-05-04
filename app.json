@@ -1,0 +1,68 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/student/search",
+    "pages/student/searchresult",
+    "pages/student/operation",
+    "pages/student/evidence",
+    "pages/student/confirm",
+    "pages/student/detail",
+    "pages/student/examineitem",
+    "pages/student/examineitemlog",
+    "pages/class/search",
+    "pages/floor/search",
+    "pages/floor/statistics",
+    "pages/teacher/examination",
+    "pages/teacher/examinationapplylist",
+    "pages/teacher/examinationapply",
+    "pages/system/login",
+    "pages/description/search"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "量化评价系统",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor":"#134d9a",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath":"/static/image/home.png",
+      "selectedIconPath":"/static/image/home_on.png"
+    },
+    {
+      "pagePath": "pages/description/search",
+      "text": "说明",
+      "iconPath":"/static/image/setting.png",
+      "selectedIconPath":"/static/image/setting_on.png"
+    }
+  ]
+  },
+  "usingComponents": {
+    "van-button": "./miniprogram_npm/@vant/weapp/button/index",
+    "van-popup": "./miniprogram_npm/@vant/weapp/popup/index",
+    "van-tree-select": "./miniprogram_npm/@vant/weapp/tree-select/index",
+    "van-tab": "./miniprogram_npm/@vant/weapp/tab/index",
+    "van-tabs": "./miniprogram_npm/@vant/weapp/tabs/index",
+    "van-cell": "./miniprogram_npm/@vant/weapp/cell/index",
+    "van-cell-group": "./miniprogram_npm/@vant/weapp/cell-group/index",
+    "van-divider": "./miniprogram_npm/@vant/weapp/divider/index",
+    "van-card": "./miniprogram_npm/@vant/weapp/card/index",
+    "van-toast": "./miniprogram_npm/@vant/weapp/toast/index",
+    "van-row": "./miniprogram_npm/@vant/weapp/row/index",
+    "van-col": "./miniprogram_npm/@vant/weapp/col/index",
+    "van-dialog": "./miniprogram_npm/@vant/weapp/dialog/index",
+    "van-empty": "./miniprogram_npm/@vant/weapp/empty/index",
+    "van-circle": "./miniprogram_npm/@vant/weapp/circle/index",
+    "van-index-bar": "./miniprogram_npm/@vant/weapp/index-bar/index",
+    "van-index-anchor": "./miniprogram_npm/@vant/weapp/index-anchor/index",
+    "van-tag": "./miniprogram_npm/@vant/weapp/tag/index",
+    "van-calendar": "./miniprogram_npm/@vant/weapp/calendar/index",
+    "van-notify": "./miniprogram_npm/@vant/weapp/notify/index"
+
+
+  },
+  "sitemapLocation": "sitemap.json"
+}

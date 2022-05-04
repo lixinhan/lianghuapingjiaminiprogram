@@ -1,0 +1,16 @@
+<view class="container">
+  <view class="examination" wx:for="{{studentlist}}" wx:for-item="item">
+      <view class="info">
+        <text class="event">{{item.event}}</text>
+        <text class="red" wx:if="{{item.score>0}}">增加:{{item.score}}分</text>
+        <text class="green" wx:else>减少:{{item.score}}分</text>
+      </view>
+      <view class="button">
+        <view class="agreement">
+          <button type="primary" bindtap="agreementExamination">申报</button>
+        </view>
+        
+      </view>
+  </view>
+</view>
+

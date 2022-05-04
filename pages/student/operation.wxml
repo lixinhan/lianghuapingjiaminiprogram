@@ -1,0 +1,36 @@
+<view class="container">
+  <van-notify id="van-notify"/>
+
+  <van-divider contentPosition="left">打分操作</van-divider>
+
+  <van-tabs type= active="{{ active }}">
+    <van-tab  title="减分">
+      <van-tree-select  
+      height="430"
+
+  items="{{ reduceItems }}"
+  main-active-index="{{ mainReduceActiveIndex }}"
+  active-id="{{ reduceactiveId }}"
+  bind:click-nav="onReduceClickNav"
+  bind:click-item="onReduceClickItem"
+/>
+
+    </van-tab>
+    <van-tab title="加分">
+      <van-tree-select
+      height="430"
+  items="{{ addItems }}"
+  main-active-index="{{ mainAddActiveIndex }}"
+  active-id="{{ addactiveId }}"
+  bind:click-nav="onAddClickNav"
+  bind:click-item="onAddClickItem"
+/>
+    </van-tab>
+</van-tabs>
+
+<view style="margin: 30rpx;">
+  
+  <van-button bindtap="goToNext" type="danger" disabled="{{count<=0}}" block> 已勾选{{count}}项，点击下一步</van-button>
+</view>
+</view>
+

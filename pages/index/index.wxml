@@ -1,0 +1,13 @@
+<view class="container">
+
+
+  <view class="event">
+    <ul>
+      <li wx:for="{{eventArray}}" wx:for-item="item" wx:key="key"  style="background-color:#{{item.color}}" bindtap="{{item.clickevent}}">
+        <image src="{{item.icon}}"></image>
+        <text>{{item.name}}</text>
+      </li>
+    </ul>
+  </view>
+</view>
+

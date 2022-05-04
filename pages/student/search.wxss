@@ -1,0 +1,9 @@
+/**index.wxss**/
+page{
+  min-height: 100%; 
+}
+.container{
+  margin-top: 200rpx;
+}
+
+.input{ border: 1rpx solid #999999; margin: 10rpx; height: 80rpx; line-height: 80rpx; padding:10rpx}

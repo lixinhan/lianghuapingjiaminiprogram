@@ -1,0 +1,44 @@
+<view class="container">
+  <view wx:if="{{showLoading == true }}"> 
+    <van-empty image="search" description="加载中" />
+  </view>
+  <view wx:if="{{studentlist.length < 1 && showLoading ==false }}"> 
+    <van-empty  description="没有对应的搜索结果" />
+  </view>
+  <view class="studentlist" wx:if="{{studentlist.length >= 1 && index<200 && showLoading ==false}}" wx:key="key" wx:for-index="index" wx:for="{{studentlist}}" wx:for-item="item" 
+  data-id="{{item.student_id}}"bindtap="goToOperation">
+      <view class="image" >
+        <image src="{{item.student_photo}}"></image>
+      </view>
+      <view class="info">
+        <view class="student_name">
+          <text>{{item.student_name}}</text>
+        </view>
+        <view class="class_name">
+          <text>{{item.department_alias}}{{item.class_name}}</text>
+        </view>
+        <view class="student_number">
+          <text>学号:{{item.student_number}}</text>
+        </view>
+        <view class="major_name">
+          <text>{{item.major_name}}</text>
+        </view>
+        <view class="total_socre">
+          <text>总分: {{item.total_score}}</text>
+        </view>
+        <view class="student_add_score">
+          <text>加分: </text><text>{{item.student_add_score}}</text>
+        </view>
+        <view class="student_reduce_score">
+          <text>减分: {{item.student_reduce_score}}</text>
+        </view>
+      </view>
+      <view  class="next">
+        >
+      </view>
+  </view>
+  <view style="display: block; text-align: center;" wx:if="{{studentlist.length > 200}}">
+      最多能展示200条记录
+  </view>
+</view>
+

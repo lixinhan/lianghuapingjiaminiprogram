@@ -1,0 +1,25 @@
+/**index.wxss**/
+page{
+  min-height: 100%;  
+  /* background-color: #134d9a; */
+}
+.container{
+  height: 100%;
+  overflow: hidden;
+  display: block;
+}
+.title{ margin-left: 30rpx; line-height: 60rpx;}
+
+.van-sidebar-item{width: 250rpx; overflow: hidden;}
+.van-tree-select__item {
+  width: 420rpx;
+  line-height: 40rpx !important;
+  padding: 10px 32px 10px var(--padding-md,16px) !important ;
+  border-bottom: 1px dashed #dbdbdb;
+}
+.van-ellipsis{
+  white-space:normal !important;
+}
+.van-notify{text-align: left !important ;}
+.van-notify text{ text-align: left;}
+

@@ -1,0 +1,48 @@
+<page-meta page-style="{{ show ? 'overflow: hidden;' : '' }}" />
+<van-toast id="van-toast" />
+
+<view class="container" >
+<view style="margin:30rpx">
+  <text>学号</text>
+  <input type="number" class="input" model:value="{{studentNumber}}" placeholder="请输入学号"/>
+</view>
+<view style="margin:30rpx">
+    <text>姓名</text>
+      <input class="input" model:value="{{studentName}}"
+    placeholder="请输入姓名"
+  />
+     </view>
+
+     <view style="margin:30rpx">
+      <text>班级</text>
+
+    <input class="input" model:value="{{classText}}" disabled="true" bindtap="showPopup"
+    placeholder="请选择班级"
+  />
+     </view>
+  <view style="margin:30rpx">
+
+  <van-button
+   type="danger"
+   block
+   bind:click="goToResult"
+   >搜索</van-button>
+   </view>
+<van-popup 
+position="bottom" 
+closeable
+bind:close="onClose"
+
+show="{{ show }}">
+<view style="margin-top: 80rpx;">
+  <van-tree-select
+  items="{{ items }}"
+  main-active-index="{{ mainActiveIndex }}"
+  active-id="{{ activeId }}"
+  bind:click-nav="onClickNav"
+  bind:click-item="onClickItem"
+/>
+</view>
+</van-popup>
+</view>
+

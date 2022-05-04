@@ -1,0 +1,64 @@
+<view class="container">
+      <view style="position:fixed;display:block; width: 100%; box-sizing: border-box; padding:10rpx;background: white;" id="search-layout">
+            <van-cell title="选择时间" bind:click="onDisplay" value="{{ date }}"  />
+            <van-cell title="{{ type == 'floor' ? '选择楼层': '选择班级'}}"  bind:click="showPopup" value="{{ floorText }}" />
+            <van-button block type="danger" bindtap="onSearch"  >搜索</van-button>
+      </view>
+      <view style="padding: 300rpx 10rpx 0">
+
+      <view wx:if="{{ type == 'floor'}}"  wx:for="{{list}}" wx:key="key" class="item" 
+      data-id="{{ item.teaching_building_floor_id }}"  bindtap="goToDetail">
+        <view class="title"> {{item.teaching_building_name}}{{item.teaching_building_floor_name}}</view> 
+        <view class="middle">{{item.total_score}}</view>
+        <view class="right">
+          <view class="score">+{{item.add_score}}</view> 
+          <view class="score">-{{item.reduce_score}}</view> 
+        </view>
+        <view class="link">
+        >
+        </view>
+        
+      </view>
+      <view wx:if="{{ type == 'class' }}" wx:for="{{list}}" wx:key="key" class="item" data-id="{{ item.class_id }}" bindtap="goToDetail">
+        <view class="title"> {{item.grade_name}}{{item.class_name}}</view> 
+        <view class="middle">{{item.total_score}}</view>
+        <view class="right">
+          <view class="score">+{{item.add_score}}</view> 
+          <view class="score">-{{item.reduce_score}}</view> 
+        </view>
+        <view class="link">
+        >
+        </view>
+        
+      </view>
+
+
+      </view>
+      
+<van-calendar
+  show="{{ show }}"
+  allow-same-day
+  default-date ="{{defaultDate}}"
+  min-date="{{ minDate }}"
+  type="range"
+  bind:close="onClose"
+  bind:confirm="onConfirm"
+/>
+
+<van-popup 
+position="bottom" 
+closeable
+bind:close="closePopup"
+show="{{ popupShow }}">
+<view style="margin-top: 80rpx;">
+  <van-tree-select
+  items="{{ popupItems }}"
+  main-active-index="{{ mainActiveIndex }}"
+  active-id="{{ activeId }}"
+  bind:click-nav="onClickNav"
+  bind:click-item="onClickItem"
+/>
+</view>
+</van-popup>
+</view>
+

@@ -1,0 +1,6 @@
+/* pages/student/examineitem.wxss */
+
+
+.van-cell__title{ padding-left: 30rpx;}
+.van-tag{ margin-right: 30rpx;}
+/* .van-index-bar__index{margin-bottom: 30rpx;} */

@@ -1,0 +1,81 @@
+<view class="container">
+      <view style="position:fixed;display:block; width: 100%; box-sizing: border-box; padding:10rpx;background: white;" id="search-layout">
+            <van-cell title="选择时间" bind:click="onDisplay" value="{{ date }}"  />
+            <!-- <van-cell title="{{ type == 'floor' ? '选择楼层': '选择班级'}}"  bind:click="showPopup" value="{{ floorText }}" /> -->
+            <van-button block type="danger" bindtap="onSearch"  >搜索</van-button>
+      </view>
+      <view style="padding: 200rpx 10rpx 0">
+        <van-row>
+          <van-col span="12">
+            <van-cell title="学生加分" value="{{studentAddScore}}" />
+          </van-col>
+          <van-col span="12">
+            <van-cell title="学生减分" value="{{studentReduceScore}}" />
+          </van-col>
+          <van-col span="12">
+            <van-cell title="楼层加分" value="{{floorAddScore}}"  />
+          </van-col>
+          <van-col span="12">
+            <van-cell title="楼层减分" value="{{floorReduceScore}}"  />
+          </van-col>
+          <van-col span="12">
+            <van-cell title="班级加分" value="{{classAddScore}}"  />
+          </van-col>
+          <van-col span="12">
+            <van-cell title="班级减分" value="{{classReduceScore}}"  />
+          </van-col>
+        </van-row>
+      <view  wx:for="{{list}}" wx:key="key" class="item" 
+      data-id="{{ item.teaching_building_floor_id }}"  bindtap="goToDetail">
+      <van-cell center title="{{item.student_examine_item_name}}"  use-label-slot="{{true}}" value="{{ item.time}}">
+        <view slot="label">
+          <view>学生:{{item.student_name}}
+          <van-tag wx:if="{{item.student_examine_log_category_id == 2 }}" type="danger">-{{item.student_examine_log_score_student}}</van-tag>
+          <van-tag wx:if="{{item.student_examine_log_category_id == 1 }}" type="success">+{{item.student_examine_log_score_student}}</van-tag>
+
+          </view>
+
+          <view>班级:{{item.department_alias}}{{item.class_name}}
+            <van-tag wx:if="{{item.student_examine_log_category_id == 2 }}" type="danger">-{{item.student_examine_log_score_class}}</van-tag>
+          <van-tag wx:if="{{item.student_examine_log_category_id == 1 }}" type="success">+{{item.student_examine_log_score_class}}</van-tag>          </view>
+
+          <view>楼层:{{item.teaching_building_name}}{{item.teaching_building_floor_name}}
+            <van-tag wx:if="{{item.student_examine_log_category_id == 2 }}" type="danger">-{{item.student_examine_log_score_building_floor}}</van-tag>
+          <van-tag wx:if="{{item.student_examine_log_category_id == 1 }}" type="success">+{{item.student_examine_log_score_building_floor}}</van-tag>          
+          </view>
+
+
+        </view>
+      </van-cell>
+      </view>
+
+
+      </view>
+      
+<van-calendar
+  show="{{ show }}"
+  allow-same-day
+  default-date ="{{defaultDate}}"
+  min-date="{{ minDate }}"
+  type="range"
+  bind:close="onClose"
+  bind:confirm="onConfirm"
+/>
+
+<van-popup 
+position="bottom" 
+closeable
+bind:close="closePopup"
+show="{{ popupShow }}">
+<view style="margin-top: 80rpx;">
+  <van-tree-select
+  items="{{ popupItems }}"
+  main-active-index="{{ mainActiveIndex }}"
+  active-id="{{ activeId }}"
+  bind:click-nav="onClickNav"
+  bind:click-item="onClickItem"
+/>
+</view>
+</van-popup>
+</view>
+

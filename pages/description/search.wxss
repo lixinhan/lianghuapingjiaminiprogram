@@ -1,0 +1,5 @@
+/**index.wxss**/
+page{
+  min-height: 100%;  
+}
+text{ margin:60rpx;display: block; color: red;}

@@ -1,0 +1,13 @@
+<view class="container">
+      <van-index-bar index-list="{{ indexList }}" highlight-color="red">
+
+  <view wx:for="{{classList}}" wx:for-item="item" wx:key="ke">
+      <van-index-anchor  index="{{item.text}}"/>
+      <view wx:for="{{item.children}}" wx:for-item="subItem" wx:key="subKey"> 
+            <van-cell data-id="{{subItem.id}}" title="{{subItem.text}}" bindtap="goToResult" is-link />
+      </view>
+</view>
+</van-index-bar>
+
+</view>
+

@@ -1,0 +1,26 @@
+<view class="container">
+      <van-index-bar index-list="{{ indexList }}" highlight-color="red">
+
+  <view wx:for="{{classList}}" wx:for-item="item" wx:key="ke">
+      <van-index-anchor  index="{{item.text}}"/>
+      <view wx:for="{{item.children}}" wx:for-item="subItem" wx:key="subKey"> 
+            <van-cell data-id="{{subItem.id}}" title="{{subItem.text}}" use-label-slot="{{true}}">
+                  <view slot="label">
+                        <view wx:if="{{subItem.category_id == 1}}">
+                        <van-tag type="success" wx:if="{{subItem.student_score > 0}}">学生+{{subItem.student_score}}</van-tag>
+                        <van-tag type="success" wx:if="{{subItem.class_score > 0}}">班级+{{subItem.class_score}}</van-tag> 
+                        <van-tag type="success" wx:if="{{subItem.teaching_building_floor_score > 0}}">楼层+{{subItem.teaching_building_floor_score}}</van-tag> 
+                        </view>
+                        <view wx:if="{{subItem.category_id == 2}}">
+                              <van-tag type="danger" wx:if="{{subItem.student_score > 0}}">学生-{{subItem.student_score}}</van-tag>
+                        <van-tag type="danger" wx:if="{{subItem.class_score > 0}}">班级-{{subItem.class_score}}</van-tag> 
+                        <van-tag type="danger" wx:if="{{subItem.teaching_building_floor_score > 0}}">楼层-{{subItem.teaching_building_floor_score}}</van-tag> 
+                        </view>
+                  </view>
+            </van-cell>
+      </view>
+</view>
+</van-index-bar>
+
+</view>
+

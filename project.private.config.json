@@ -1,0 +1,175 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/student/operation",
+          "pathName": "pages/student/operation",
+          "query": "student_id=335667110174785536&remote_type=video&remote_url=http://localhost:9501/2022-02-20/evidenceFile/336020991211732992.webm",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/class/search",
+          "pathName": "pages/class/search",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/floor/search",
+          "pathName": "pages/floor/search",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/teacher/examination",
+          "pathName": "pages/teacher/examination",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/student/search",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/student/operation",
+          "query": "student_id=335667172904796160&remote_type=video&remote_url=http://localhost:9501/2022-02-20/evidenceFile/335968305082793984.webm",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/student/searchresult",
+          "query": "studentName=李&studentNumber",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/student/evidence",
+          "query": "student_id=335667172904796160",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/system/login",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/class/search",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/floor/search",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/student/confirm",
+          "query": "student_id=&class_id=335666623882985472&teaching_building_floor_id=&remote_type=photo&remote_url=https%3A%2F%2Flianghuapingjia.zgxwl.cn%2F2022-02-21%2FevidencePhoto%2F336346461841129472.jpg&selected_items=335979808645185536%2C335979636078936064",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/student/operation",
+          "query": "student_id=&remote_type=&remote_url=&teaching_building_floor_id=333699072646971392&class_id=",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/index/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/floor/statistics",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/student/detail",
+          "query": "student_id=336580805327323136",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/student/examineitem",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/student/examineitemlog",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/floor/statistics",
+          "query": "type=class",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/floor/statistics",
+          "query": "type=class",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/teacher/examination",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/teacher/examinationapplylist",
+          "query": "",
+          "scene": null,
+          "launchMode": "default"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,31 @@
+/**index.wxss**/
+page{
+  min-height: 100%; 
+}
+.container{
+  height: 100%;
+  overflow: hidden;
+  display: block;
+}
+.itemlist{
+  margin-left: 30rpx;
+}
+.itemlist label{
+  display: block;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+}
+.console{
+  background-color: white;
+  width: 400rpx;
+  height:320rpx;
+  position: fixed;
+  top: 500rpx;
+  left: 325rpx ;
+}
+.console text{
+  display: block;
+  line-height: 60rpx;
+  height: 60rpx;
+  
+}

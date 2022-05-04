@@ -1,0 +1,9 @@
+<view class="container">
+  <view style="margin: 200rpx 40rpx 100rpx;color:red;">
+    * 登录时请务必使用在上报给学校用的"手机号",否则可能无法登录
+  </view>
+  <view>
+    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">点击登录</button>
+  </view>
+</view>
+

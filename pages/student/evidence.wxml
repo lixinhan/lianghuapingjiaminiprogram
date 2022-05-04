@@ -1,0 +1,50 @@
+<view class="container">
+
+  <van-divider contentPosition="left">信息留存</van-divider>
+  <view style="margin:10rpx;">
+  <camera device-position="back" flash="off" binderror="error" style="width: 100%; height: 750rpx;"></camera>
+</view>
+<view style="margin-top: 100rpx;">
+  <van-row>
+  <van-col span="12">
+    <view style="margin:10rpx;">
+    <van-button
+    block
+    type="danger" 
+    bindtap="takePhoto"
+    bindtouchstart="onTouchStart" 
+    bindtouchend="onTouchEnd"
+    bindlongpress="onLongPress">单击拍照/长按录像</van-button>
+    </view>
+  </van-col>
+  <van-col span="12">
+  <view style="margin:10rpx;">
+    <van-button type="primary"
+         block
+ bindtap="skip">跳过</van-button>
+</view>
+  </van-col>
+</van-row>
+</view>
+
+
+<van-popup closeable show="{{ show }}" bind:close="onClose">
+<view>
+<video wx:if="{{videoSrc != ''}}" src="{{videoSrc}}">
+</video>
+<image wx:if="{{imageSrc != ''}}" src="{{imageSrc}}"></image>
+</view>
+<view style="margin-top: 10rpx;">
+  <van-button block type="primary" bindtap="upLoad">确定留存</van-button>
+</view>
+</van-popup>
+</view>
+
+<van-dialog id="van-dialog" />
+
+<van-popup show="{{ loadingShow }}" >
+  <van-circle value="{{ loadingProgress }}" text="上传中" />
+</van-popup>
+
+
+

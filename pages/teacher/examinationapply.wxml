@@ -1,0 +1,22 @@
+<view class="container">
+      <view class="info">
+        <text class="event">{{event}}</text>
+        <text class="red" wx:if="{{score>0}}">增加:{{score}}分</text>
+        <text class="green" wx:else>减少:{{score}}分</text>
+      </view>
+      <view>
+        <text>申报名单</text>
+        <view wx:for="{{teacherlist}}" wx:for-item="item" class="tearchlist">
+          <label>
+        <checkbox value="{{item.tearch_id}}" />{{item.tearcher}}
+      </label>
+        </view>
+        
+      </view>
+      <view class="button">
+        <view class="agreement">
+          <button type="primary" bindtap="agreementExamination">申报</button>
+        </view>        
+  </view>
+</view>
+

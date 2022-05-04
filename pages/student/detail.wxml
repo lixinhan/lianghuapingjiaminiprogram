@@ -1,0 +1,97 @@
+<view class="container">
+<view wx:if="{{ student_id != ''}}">
+    <van-divider contentPosition="left">学生信息</van-divider>
+    <view class="studentlist">
+        <view class="image" >
+          <image src="{{item.student_photo}}"></image>
+        </view>
+        <view class="info">
+          <view class="student_name">
+            <text>{{item.student_name}}</text>
+          </view>
+          <view class="class_name">
+            <text>{{item.department_alias}}{{item.class_name}}</text>
+          </view>
+          <view class="student_number">
+            <text>学号:{{item.student_number}}</text>
+          </view>
+          <view class="major_name">
+            <text>{{item.major_name}}</text>
+          </view>
+          <view class="total_socre">
+            <text>总分: {{item.total_score}}</text>
+          </view>
+          <view class="student_add_score">
+            <text>加分: </text><text>{{item.student_add_score}}</text>
+          </view>
+          <view class="student_reduce_score">
+            <text>减分: {{item.student_reduce_score}}</text>
+          </view>
+        </view>
+    </view>
+</view>  
+
+<view wx:if="{{ class_id != ''}}">
+    <van-divider contentPosition="left">班级信息</van-divider>
+    <view class="classlist">
+      {{classItem.department_name}}
+      {{classItem.department_alias}}
+      {{classItem.class_name}}
+      ({{classItem.grade_admission_time}}级)
+    </view>
+</view>  
+
+<view wx:if="{{ teaching_building_floor_id != ''}}">
+    <van-divider contentPosition="left">楼层信息</van-divider>
+    <view class="classlist">
+      {{teachingBuildingFloorItem.teaching_building_name}}{{teachingBuildingFloorItem.teaching_building_floor_name}}
+    </view>
+</view>  
+
+
+  <van-divider contentPosition="left">扣分信息</van-divider>
+  <van-cell-group>
+  <van-cell data-teacher_name="{{item.teacher_name}}" data-remote_type="{{item.student_examine_log_file_type}}" data-remote_url="{{item.student_examine_log_file_url}}" bindtap="showDetail" wx:for="{{list}}" wx:key="key" wx:for-item="item"  >
+    <view slot="title">
+      [{{item.create_time}}] 
+      {{item.student_examine_item_name}}
+
+    </view>
+    <view slot="right-icon">
+    <!-- 学生 -->
+    <van-tag wx:if="{{item.student_examine_log_student_category_id == '1'}}" type="primary">+{{item.student_examine_log_student_score}}</van-tag>
+
+      <van-tag wx:if="{{item.student_examine_log_student_category_id == '2'}}" type="danger">-{{item.student_examine_log_student_score}}</van-tag>
+
+
+    <!-- 楼层 -->
+    <van-tag wx:if="{{item.student_examine_log_building_floor_category_id == '1'}}" type="primary">+{{item.student_examine_log_building_floor_score}}</van-tag>
+      <van-tag wx:if="{{item.student_examine_log_building_floor_category_id == '2'}}" type="danger">-{{item.student_examine_log_building_floor_score}}</van-tag>
+      
+    <!-- 班级 -->
+    <van-tag wx:if="{{item.student_examine_log_class_category_id == '1'}}" type="primary">+{{item.student_examine_log_class_score}}</van-tag>
+      <van-tag wx:if="{{item.student_examine_log_class_category_id == '2'}}" type="danger">-{{item.student_examine_log_class_score}}</van-tag>
+         
+    </view>
+  </van-cell>
+  
+</van-cell-group>
+
+<van-popup show="{{ show }}" bind:close="onClose">
+<view>
+操作人:{{teacher_name}}
+</view>
+<view wx:if="{{remote_type == ''}}">
+
+</view>
+<view wx:if="{{remote_type == '2'}}">
+  <video style="width:650rpx;" src="{{ remote_url }}"></video>
+</view>
+<view wx:if="{{remote_type == '3'}}">
+  <image style="width:650rpx;" src="{{ remote_url }}"></image>
+</view>
+</van-popup>
+
+</view>
+
+
