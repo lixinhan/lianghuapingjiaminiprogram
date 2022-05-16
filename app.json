@@ -16,7 +16,12 @@
     "pages/teacher/examinationapplylist",
     "pages/teacher/examinationapply",
     "pages/system/login",
-    "pages/description/search"
+    "pages/description/search",
+    "pages/teacher/launch",
+    "pages/teacher/launchlist",
+    "pages/teacher/applylist",
+    "pages/teacher/applydetail",
+    "pages/teacher/auditlist"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -25,20 +30,21 @@
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "selectedColor":"#134d9a",
-    "list": [{
-      "pagePath": "pages/index/index",
-      "text": "首页",
-      "iconPath":"/static/image/home.png",
-      "selectedIconPath":"/static/image/home_on.png"
-    },
-    {
-      "pagePath": "pages/description/search",
-      "text": "说明",
-      "iconPath":"/static/image/setting.png",
-      "selectedIconPath":"/static/image/setting_on.png"
-    }
-  ]
+    "selectedColor": "#134d9a",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/static/image/home.png",
+        "selectedIconPath": "/static/image/home_on.png"
+      },
+      {
+        "pagePath": "pages/description/search",
+        "text": "说明",
+        "iconPath": "/static/image/setting.png",
+        "selectedIconPath": "/static/image/setting_on.png"
+      }
+    ]
   },
   "usingComponents": {
     "van-button": "./miniprogram_npm/@vant/weapp/button/index",
@@ -60,9 +66,12 @@
     "van-index-anchor": "./miniprogram_npm/@vant/weapp/index-anchor/index",
     "van-tag": "./miniprogram_npm/@vant/weapp/tag/index",
     "van-calendar": "./miniprogram_npm/@vant/weapp/calendar/index",
-    "van-notify": "./miniprogram_npm/@vant/weapp/notify/index"
-
-
+    "van-notify": "./miniprogram_npm/@vant/weapp/notify/index",
+    "van-field": "./miniprogram_npm/@vant/weapp/field/index",
+    "van-radio": "./miniprogram_npm/@vant/weapp/radio/index",
+    "van-radio-group": "./miniprogram_npm/@vant/weapp/radio-group/index",
+    "van-swipe-cell": "./miniprogram_npm/@vant/weapp/swipe-cell/index",
+    "van-stepper": "./miniprogram_npm/@vant/weapp/stepper/index"
   },
   "sitemapLocation": "sitemap.json"
 }

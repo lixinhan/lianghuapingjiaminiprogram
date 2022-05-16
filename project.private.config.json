@@ -1,15 +1,6 @@
 {
   "setting": {},
   "condition": {
-    "plugin": {
-      "list": []
-    },
-    "game": {
-      "list": []
-    },
-    "gamePlugin": {
-      "list": []
-    },
     "miniprogram": {
       "list": [
         {
@@ -166,10 +157,84 @@
           "name": "",
           "pathName": "pages/teacher/examinationapplylist",
           "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/index/index",
+          "query": "",
+          "launchMode": "default",
           "scene": null,
-          "launchMode": "default"
+          "partialCompile": {
+            "enabled": false,
+            "pages": [
+              "pages/teacher/examinationapplylist"
+            ]
+          }
+        },
+        {
+          "name": "",
+          "pathName": "pages/teacher/examinationapply",
+          "query": "",
+          "launchMode": "default",
+          "scene": null,
+          "partialCompile": {
+            "enabled": false,
+            "pages": []
+          }
+        },
+        {
+          "name": "",
+          "pathName": "pages/teacher/launchlist",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/teacher/launch",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/teacher/applylist",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/teacher/launch",
+          "query": "teacher_examine_id=363971445279162368",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/teacher/applydetail",
+          "query": "teacher_examine_id=365045549126123520&teacher_examine_apply_type=2&teacher_examine_apply_type_id=337967722908352512",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/teacher/auditlist",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/teacher/applydetail",
+          "query": "teacher_examine_id=365793820077457408&teacher_examine_apply_type=2&teacher_examine_apply_type_id=337967722908352512",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
-  }
+  },
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html"
 }

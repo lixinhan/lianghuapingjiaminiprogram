@@ -1,75 +1,66 @@
-// index.js
-// 获取应用实例
-const app = getApp()
-
+// pages/teacher/examination.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-    "studentlist":[
-      {
-        "photo":"/static/image/home.png",
-        "name":"张毅1",
-        "event":"参加河北省廊坊市第三十七届评课比赛，获得安次区第一名",
-        "score":"30",
-      },
-      {
-        "photo":"/static/image/home.png",
-        "name":"张毅1",
-        "event":"打骂学生",
-        "score":"-30",
-      },
-      {
-        "photo":"/static/image/home.png",
-        "name":"张毅1",
-        "event":"参加河北省廊坊市第三十七届评课比赛，获得安次区第一名",
-        "score":"30",
-      },
-      {
-        "photo":"/static/image/home.png",
-        "name":"张毅1",
-        "event":"打骂学生",
-        "score":"-30",
-      },
-    ]
+
   },
-  goToOperation(){
-    wx.navigateTo({
-      url: "/pages/student/operation",
-    })
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
   },
-  refuseExamination(){
-    wx.showModal({
-      title: '提示',
-      content: '确定拒绝申请么?',
-      success (res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-          wx.switchTab({
-            url: '/pages/index/index'
-          })
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-        }
-      }
-    })
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
   },
-  agreementExamination(){
-    wx.showModal({
-      title: '提示',
-      content: '确定通过申请么',
-      success (res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-          wx.switchTab({
-            url: '/pages/index/index'
-          })
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-        }
-      }
-    })
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
   },
-  // 事件处理函数
-  bindViewTap() {
-  
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
   }
 })

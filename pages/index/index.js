@@ -28,7 +28,12 @@ Page({
             {"icon":"/static/image/class_search.png","name":"班级查询","color":"fe7f26","clickevent":"goToClassSearch"},
             {"icon":"/static/image/floor_search.png","name":"楼层查询","color":"cf0053","clickevent":"goToFloorSearch"},
             {"icon":"/static/image/operation_detail.png","name":"考核日志","color":"ec443a","clickevent":"goToExamineItemLog"},
-            {"icon":"/static/image/detail.png","name":"考核细则","color":"f4ba24","clickevent":"goToExamineItemDetail"}]
+
+            {"icon":"/static/image/audit.png","name":"教师考核审批","color":"E51400","clickevent":"goToTeacherAuditList"},
+            {"icon":"/static/image/apply.png","name":"教师考核申请","color":"6D8764","clickevent":"goToTeacherApplyList"},
+            {"icon":"/static/image/launch.png","name":"教师考核发起","color":"76608A","clickevent":"goToTeacherLaunchList"},
+            {"icon":"/static/image/detail.png","name":"学生考核细则","color":"f4ba24","clickevent":"goToExamineItemDetail"},
+          ]
           if(data.code!=90000){
              for(var x in powerList){
                   if(data.data.indexOf(powerList[x].clickevent)==-1){
@@ -141,6 +146,21 @@ Page({
   goToExaminationApplyList(){
     wx.navigateTo({
       url: '/pages/teacher/examinationapplylist',
+    })
+  },
+  goToTeacherAuditList(){
+    wx.navigateTo({
+      url: '/pages/teacher/auditlist',
+    })
+  },
+  goToTeacherApplyList(){
+    wx.navigateTo({
+      url: '/pages/teacher/applylist',
+    })
+  },
+  goToTeacherLaunchList(){
+    wx.navigateTo({
+      url: '/pages/teacher/launchlist',
     })
   }
 })

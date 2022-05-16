@@ -1,38 +1,66 @@
-// index.js
-// 获取应用实例
-const app = getApp()
-
+// pages/teacher/examinationapply.js
 Page({
+
+  /**
+   * 页面的初始数据
+   */
   data: {
-      "event":"参加河北省廊坊市第三十七届评课比赛，获得安次区第一名",
-      "score":"30",
-      "teacherlist":[
-        {"tearcher":"张老师","tearcher_id":"123123"},
-        {"tearcher":"李老师","tearcher_id":"123123"},
-        {"tearcher":"刘老师","tearcher_id":"123123"},
-        {"tearcher":"王老师","tearcher_id":"123123"},
-        {"tearcher":"赵老师","tearcher_id":"123123"},
-      ]
-      
+
   },
-  agreementExamination(){
-    wx.showModal({
-      title: '提示',
-      content: '确定申报么',
-      success (res) {
-        if (res.confirm) {
-          console.log('用户点击确定')
-          wx.switchTab({
-            url: '/pages/index/index'
-          })
-        } else if (res.cancel) {
-          console.log('用户点击取消')
-        }
-      }
-    })
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
   },
-  // 事件处理函数
-  bindViewTap() {
-  
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
   }
 })
