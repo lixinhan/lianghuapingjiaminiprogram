@@ -1,9 +1,13 @@
 <view class="container">
 
 
-  <view class="event">
-    <ul>
-      <li wx:for="{{eventArray}}" wx:for-item="item" wx:key="key"  style="background-color:#{{item.color}}" bindtap="{{item.clickevent}}">
+  <view wx:for="{{eventArray}}"  class="event">
+    <van-divider  wx:if="{{ item.list.length  > 0 }}"
+  contentPosition="left"
+  customStyle="color: #1989fa; border-color: #1989fa; font-size: 24rpx;"
+>{{item.category}}</van-divider>
+    <ul wx:if="{{ item.list.length  > 0}}">
+      <li wx:if="{{item != null}}" wx:for="{{item.list}}" wx:for-item="item" wx:key="key"  style="background-color:#{{item.color}}" bindtap="{{item.clickevent}}">
         <image src="{{item.icon}}"></image>
         <text>{{item.name}}</text>
       </li>

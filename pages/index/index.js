@@ -21,34 +21,55 @@ Page({
       success:(res)=>{
           const data=res.data;
           var  powerList=[
-            {"icon":"/static/image/student.png","name":"学生考核","color":"338ced","clickevent":"goToStudentExamine"},
+            {
+              'category':"学生考核",
+              'list':[
+                {"icon":"/static/image/student.png","name":"学生考核","color":"338ced","clickevent":"goToStudentExamine"},
             {"icon":"/static/image/class.png","name":"班级考核","color":"16a11c","clickevent":"goToClassExamine"},
             {"icon":"/static/image/floor.png","name":"楼层考核","color":"d95536","clickevent":"goToFloorExamine"},
             {"icon":"/static/image/student_search.png","name":"学生查询","color":"5f40b6","clickevent":"goToStudentSearch"},
             {"icon":"/static/image/class_search.png","name":"班级查询","color":"fe7f26","clickevent":"goToClassSearch"},
             {"icon":"/static/image/floor_search.png","name":"楼层查询","color":"cf0053","clickevent":"goToFloorSearch"},
             {"icon":"/static/image/operation_detail.png","name":"考核日志","color":"ec443a","clickevent":"goToExamineItemLog"},
-
-            {"icon":"/static/image/audit.png","name":"教师考核审批","color":"E51400","clickevent":"goToTeacherAuditList"},
-            {"icon":"/static/image/apply.png","name":"教师考核申请","color":"6D8764","clickevent":"goToTeacherApplyList"},
-            {"icon":"/static/image/launch.png","name":"教师考核发起","color":"76608A","clickevent":"goToTeacherLaunchList"},
             {"icon":"/static/image/detail.png","name":"学生考核细则","color":"f4ba24","clickevent":"goToExamineItemDetail"},
+              ]
+            },
+            {
+              'category':"教师考核",
+              'list':[
+                {"icon":"/static/image/audit.png","name":"教师考核审批","color":"E51400","clickevent":"goToTeacherAuditList"},
+            {"icon":"/static/image/apply.png","name":"教师考核评价","color":"6D8764","clickevent":"goToTeacherApplyList"},
+            {"icon":"/static/image/launch.png","name":"教师考核发起","color":"76608A","clickevent":"goToTeacherLaunchList"},
+            {"icon":"/static/image/operation_detail.png","name":"本人考核查询","color":"f4ba24","clickevent":"goToTeacherLog"},
+              ]
+            },
+            {
+              'category':"公文流转",
+              'list':[
+                {"icon":"/static/image/audit.png","name":"公文流转","color":"E51400","clickevent":"goToOfficeList"},
+              ]
+            }
+
+            
           ]
           if(data.code!=90000){
              for(var x in powerList){
-                  if(data.data.indexOf(powerList[x].clickevent)==-1){
-                    delete powerList[x];
+                  for(var y in powerList[x].list){
+                    if(data.data.indexOf(powerList[x].list[y].clickevent)==-1){
+                      delete powerList[x].list[y];
+                    }
                   }
+                 
              }
           }
-          var list=[];
-          powerList.forEach(element => {
-            if(element!==null){
-              list.push(element)
-            }
-          });
+          // var list=[];
+          // powerList.forEach(element => {
+          //   if(element!==null){
+          //     list.push(element)
+          //   }
+          // });
           this.setData({
-            eventArray:list
+            eventArray:powerList
            })
       }
     })
@@ -161,6 +182,16 @@ Page({
   goToTeacherLaunchList(){
     wx.navigateTo({
       url: '/pages/teacher/launchlist',
+    })
+  },
+  goToTeacherLog(){
+    wx.navigateTo({
+      url: '/pages/teacher/log',
+    })
+  },
+  goToOfficeList(){
+    wx.navigateTo({
+      url: '/pages/office/list',
     })
   }
 })

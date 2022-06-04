@@ -12,16 +12,16 @@
     "pages/class/search",
     "pages/floor/search",
     "pages/floor/statistics",
-    "pages/teacher/examination",
-    "pages/teacher/examinationapplylist",
-    "pages/teacher/examinationapply",
     "pages/system/login",
     "pages/description/search",
     "pages/teacher/launch",
     "pages/teacher/launchlist",
     "pages/teacher/applylist",
     "pages/teacher/applydetail",
-    "pages/teacher/auditlist"
+    "pages/teacher/auditlist",
+    "pages/teacher/log",
+    "pages/office/list",
+    "pages/office/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -71,7 +71,11 @@
     "van-radio": "./miniprogram_npm/@vant/weapp/radio/index",
     "van-radio-group": "./miniprogram_npm/@vant/weapp/radio-group/index",
     "van-swipe-cell": "./miniprogram_npm/@vant/weapp/swipe-cell/index",
-    "van-stepper": "./miniprogram_npm/@vant/weapp/stepper/index"
+    "van-stepper": "./miniprogram_npm/@vant/weapp/stepper/index",
+    "van-steps": "./miniprogram_npm/@vant/weapp/steps/index",
+    "van-grid": "./miniprogram_npm/@vant/weapp/grid/index",
+    "van-grid-item": "./miniprogram_npm/@vant/weapp/grid-item/index"
+
   },
   "sitemapLocation": "sitemap.json"
 }

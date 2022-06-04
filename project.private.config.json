@@ -232,6 +232,27 @@
           "query": "teacher_examine_id=365793820077457408&teacher_examine_apply_type=2&teacher_examine_apply_type_id=337967722908352512",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/office/list",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/office/detail",
+          "query": "id=372033419879645184",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/office/detail",
+          "query": "id=373697860782260224&auditor_id=373698426291879936",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

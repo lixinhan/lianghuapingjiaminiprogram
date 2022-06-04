@@ -36,7 +36,7 @@ export function upload(option){
   option.header['login_token']=loginToken
   option.name='file';
   option.complete=function(res){
-
+      console.log(res)
       if(typeof(res.data.code)!=="undefined"&&res.data.code==90000){
         console.log("需要登录了")
         wx.setStorageSync('login_token',"")
