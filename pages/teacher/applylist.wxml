@@ -1,0 +1,44 @@
+<!--pages/teacher/launchlist.wxml-->
+<view class="page">
+  <van-tabs active="a">
+  <van-tab title="未申报" name="a">
+    <view wx:if="{{ unApplyList.length == 0}}">
+        <van-empty  description="无未申报数据" />
+    </view>
+    <view class="list">
+    <view  wx:for="{{ unApplyList }}" class="list-item">
+      <view class="title">{{ item.teacher_examine_title}}</view>
+      <view class="status success" wx:if="{{item.status == 20}}">{{item.status_text}}</view>
+      <view class="status refuse" wx:elif="{{item.status == 30}}">{{item.status_text}}</view>
+      <view class="status" wx:else >{{item.status_text}}</view>      <view class="name" >{{item.teacher_examine_apply_type_name}}</view>
+      <view wx:if="{{ item.teacher_examine_type == 1}}" class="add score">加分</view>
+      <view wx:else class="reduce score">减分</view>
+      <view class="time">申报时间: {{item.start_time}}-{{item.end_time}}</view>
+      <view class="operation">
+        <van-button type="info" bindtap="goToTeacherExamineEdit" data-id="{{item.teacher_examine_id}}" data-type="{{item.teacher_examine_apply_type}}" data-type_id="{{item.teacher_examine_apply_type_id}}" size="small">申报</van-button>
+      </view>
+    </view>
+  </view>
+  </van-tab>
+  <van-tab title="已申报" name="b">
+    <view wx:if="{{ applyedList.length == 0}}">
+        <van-empty  description="无未申报数据" />
+    </view>
+    <view class="list">
+    <view wx:for="{{ applyedList }}" class="list-item">
+      <view class="title">{{ item.teacher_examine_title}}</view>
+      <view class="status success" wx:if="{{item.status == 20}}">{{item.status_text}}</view>
+      <view class="status refuse" wx:elif="{{item.status == 30}}">{{item.status_text}}</view>
+      <view class="status" wx:else >{{item.status_text}}</view>      <view class="name" >{{item.teacher_examine_apply_type_name}}</view>
+      <view wx:if="{{ item.teacher_examine_type == 1}}" class="add score"> 加分</view>
+      <view wx:else class="reduce score"> 减分</view>
+      <view class="time">申报时间: {{item.start_time}}-{{item.end_time}}</view>
+      <view class="operation">
+        <van-button type="info" bindtap="goToTeacherExamineEdit" data-id="{{item.teacher_examine_id}}" data-type="{{item.teacher_examine_apply_type}}" data-type_id="{{item.teacher_examine_apply_type_id}}" size="small">修改</van-button>
+     </view>
+    </view>
+  </view>
+  </van-tab>
+</van-tabs>
+
+</view>

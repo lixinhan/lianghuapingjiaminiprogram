@@ -1,0 +1,17 @@
+/* pages/office/list.wxss */
+.container{
+  padding-bottom: 200rpx;
+}
+.operation-button{
+  position: fixed; 
+  bottom: 0rpx;
+  width: 100%;
+}
+
+.van-cell-group__title{ color:rgb(102, 102, 214) !important; }
+
+.operation-button .button{
+  width: 50%;
+  float: left;
+}
+.red .van-cell__title{color:red}

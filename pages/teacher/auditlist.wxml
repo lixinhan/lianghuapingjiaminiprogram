@@ -1,0 +1,28 @@
+<!--pages/teacher/launchlist.wxml-->
+<view class="page">
+  <view class="list">
+    <view wx:for="{{ list }}" class="list-item">
+      <view class="title">{{ item.teacher_examine_title}}</view>
+      <view class="status success" wx:if="{{item.status == 20}}">{{item.status_text}}</view>
+      <view class="status refuse" wx:elif="{{item.status == 30}}">{{item.status_text}}</view>
+      <view class="status" wx:else >{{item.status_text}}</view>
+      <view class="teacherList">
+        <van-empty wx:if="{{ item.apply_crew.length== 0 }}" description="暂无申报信息" />
+
+        <van-cell-group>
+          <van-cell  wx:for="{{ item.apply_crew }}" 
+          wx:for-item="subItem" title="{{subItem.teacher_name}}:{{subItem.teacher_examine_item_name}}">
+            <van-tag wx:if="{{ item.teacher_examine_type == 2 }}" type="danger">+{{subItem.teacher_examine_item_score}}</van-tag>
+            <van-tag type="success" wx:else>+{{subItem.teacher_examine_item_score}}</van-tag>
+          </van-cell>
+        </van-cell-group>
+      </view>
+      
+      <view class="operation" wx:if="{{ item.status== 12 }}">
+        <van-button type="info" bindtap="auditApply" data-id="{{item.teacher_examine_id}}" data-status="2">通过</van-button>
+        <van-button type="danger" bindtap="auditApply" data-id="{{item.teacher_examine_id}}" data-status="3">拒绝</van-button>
+      </view>
+    </view>
+  </view>
+</view>
+<van-toast id="van-toast" />

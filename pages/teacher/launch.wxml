@@ -1,0 +1,92 @@
+<!--pages/teacher/launch.wxml-->
+<view class="page">
+
+  <van-cell-group>
+  <van-field
+    model:value="{{ teacherExamineTitle }}"
+    placeholder="请输入项目名"
+    label="项目名"
+  />
+
+  <van-field
+    model:value="{{ teacherExamineDescription }}"
+    placeholder="请输入项目描述"
+    label="项目描述"
+  />
+  <van-field    label="项目类型">
+    <view slot="input">
+      <van-radio-group value="{{ teacherExamineType }}"   bind:change="onTypeChange"
+ direction="horizontal">
+        <van-radio name="1">加分</van-radio>
+        <van-radio name="2">减分</van-radio>
+      </van-radio-group>
+    </view>
+  </van-field>
+  <van-field  label="申报科室" bindtap="showOrganizationPopup" is-link readonly value="{{ activeOrganizationText }}"	/>
+  <van-field bindtap="showGradePopup"  label="申报年级" is-link readonly value="{{  activeGradeText }}"	/>
+  <van-field bindtap="onDateDisplay"  label="申报时间" is-link readonly value="{{ activeDateText }}" 	/>
+  </van-cell-group>
+  <view class="addItemButton">
+    <van-button icon="plus" type="primary" size="small" bindtap="addItem">新增考核项目</van-button>
+  </view>
+  <view>
+      <van-cell-group wx:for="{{examineItem}}" >
+        <van-field placeholder="请输入考核项名称" use-button-slot
+        data-id="{{item.id}}"
+        value="{{item.title}}"
+        bind:change="onItemChange"
+        >
+          <view slot="button">
+            <van-stepper 
+            data-id="{{item.id}}"
+             value="{{item.value}}" 
+             bind:change="onStepChange"
+             step="0.1"
+             min="0.1"
+             decimal-length="{{ 1 }}"/>
+          </view>
+        </van-field>
+      </van-cell-group>
+  </view>
+</view>
+<view style="padding: 10rpx;">
+  <van-button wx:if="{{ teacherExamineId== '' }}" type="info" block bindtap="onSubmit">添加教师考核项目</van-button>
+  <van-button wx:else type="warning" block bindtap="onSubmit">修改教师考核项目</van-button>
+</view>
+
+<van-popup show="{{ gradeSelectShow }}" 
+position="bottom"
+bind:close="onGradeClose">
+  <van-tree-select
+    items="{{ gradeSelectItem }}"
+    main-active-index="{{ mainGradeActiveIndex }}"
+    active-id="{{ activeGradeId }}"
+    bind:click-nav="onClickGradeNav"
+    bind:click-item="onClickGradeItem"
+  />
+</van-popup>
+
+<van-popup show="{{ organizationSelectShow }}"
+position="bottom"
+bind:close="onOrganizationClose">
+  <van-tree-select
+    items="{{ organizationSelectItem }}"
+    main-active-index="{{ mainOrganizationActiveIndex }}"
+    active-id="{{ activeOrganizationId }}"
+    bind:click-nav="onClickOrganizationNav"
+    bind:click-item="onClickOrganizationItem"
+  />
+</van-popup>
+
+
+<van-calendar
+  show="{{ dateShow }}"
+  type="range"
+  bind:close="onDateClose"
+  bind:confirm="onDateConfirm"
+  min-date="{{ 1640966400000}}"
+  allow-same-day="{{ true }}"
+  default-date="{{ defaultDate }}"
+/>
+
+<van-toast id="van-toast" />

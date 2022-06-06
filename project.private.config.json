@@ -253,6 +253,13 @@
           "query": "id=373697860782260224&auditor_id=373698426291879936",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/office/list",
+          "query": "document_circulation_id= 374404575697829888",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

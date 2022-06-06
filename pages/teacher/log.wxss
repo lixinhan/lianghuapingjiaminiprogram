@@ -1,0 +1,45 @@
+/**index.wxss**/
+page{
+  min-height: 100%;   color:#323232;
+}
+.item{
+  display: block; 
+  overflow: hidden;
+  border-bottom: 1px solid #dbdbdb ;
+}
+.item .title{
+  display: block;
+  float: left;
+  width: 330rpx;
+  height: 140rpx;
+  line-height: 140rpx;
+}
+.item .middle{
+  display: block;
+  float: left;
+  width: 200rpx;
+  line-height: 140rpx;
+  height: 140rpx;
+  text-align: center;
+  font-size: 50rpx;
+
+}
+.item .right{
+  display: block;
+  float: left;
+  width: 140rpx;
+  height: 140rpx;
+}
+.item .score{
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+}
+.item .link{
+  float: left;
+  width: 50rpx;
+  height: 140rpx;
+  text-align: right;
+  line-height: 140rpx;
+  color:gray
+}

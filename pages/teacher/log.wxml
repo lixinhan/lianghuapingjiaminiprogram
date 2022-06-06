@@ -1,0 +1,52 @@
+<view class="container">
+      <view style="position:fixed;display:block; width: 100%; box-sizing: border-box; padding:10rpx;background: white;" id="search-layout">
+            <van-cell title="选择时间" bind:click="onDisplay" value="{{ date }}"  />
+            <!-- <van-cell title="{{ type == 'floor' ? '选择楼层': '选择班级'}}"  bind:click="showPopup" value="{{ floorText }}" /> -->
+            <van-button block type="danger" bindtap="onSearch"  >搜索</van-button>
+      </view>
+      <view style="padding: 200rpx 10rpx 0">
+      <view  wx:for="{{list}}" wx:key="key" class="item" >
+      <van-cell center title="{{item.student_examine_item_name}}"  use-label-slot="{{true}}" value="{{ item.time}}">
+        <view slot="label">
+         
+          <view>考核:{{item.teacher_examine_title}}</view>
+          <view>评价:{{item.teacher_examine_item_name}}
+          <van-tag wx:if="{{item.student_examine_log_category_id == 2 }}" type="danger">-{{item.student_examine_log_score_student}}</van-tag>
+          <van-tag wx:if="{{item.teacher_examine_type == 1 }}" type="success">+{{item.teacher_examine_item_score}}</van-tag>
+
+          </view>
+
+        </view>
+      </van-cell>
+      </view>
+
+
+      </view>
+      
+<van-calendar
+  show="{{ show }}"
+  allow-same-day
+  default-date ="{{defaultDate}}"
+  min-date="{{ minDate }}"
+  type="range"
+  bind:close="onClose"
+  bind:confirm="onConfirm"
+/>
+
+<van-popup 
+position="bottom" 
+closeable
+bind:close="closePopup"
+show="{{ popupShow }}">
+<view style="margin-top: 80rpx;">
+  <van-tree-select
+  items="{{ popupItems }}"
+  main-active-index="{{ mainActiveIndex }}"
+  active-id="{{ activeId }}"
+  bind:click-nav="onClickNav"
+  bind:click-item="onClickItem"
+/>
+</view>
+</van-popup>
+</view>
+

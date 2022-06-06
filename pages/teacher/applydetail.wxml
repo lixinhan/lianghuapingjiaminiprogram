@@ -1,0 +1,29 @@
+<!--pages/teacher/applydetail.wxml-->
+<view class="page">
+<view class="title">
+{{teacher_examine_title}}
+</view>
+<view class="description">
+{{teacher_examine_description}}
+</view>
+
+<view wx:for="{{examine_teachers}}">
+  <van-cell-group>
+
+  <van-cell title="{{item.teacher_name}}">
+  <van-button size="small" type="info" bindtap="canleSelect" data-teacher_id="{{item.teacher_id}}">取消选择</van-button>
+  </van-cell>
+  <van-radio-group value="{{ item.teacher_examine_item_id }}" bind:change="onChange" data-teacher_id="{{item.teacher_id}}">
+  <van-radio   wx:for="{{examine_items}}" name="{{item.teacher_examine_item_id}}">
+    <view class="radio-text" wx:if="{{teacher_examine_type == 1}}">[+{{item.teacher_examine_item_score}}]</view>
+    <view class="radio-text"  wx:else>[-{{item.teacher_examine_item_score}}]</view>
+    <view class="radio-text" >{{item.teacher_examine_item_name}}</view>
+  </van-radio>
+</van-radio-group>
+  </van-cell-group>
+</view>
+<view class="sub_button">
+  <van-button  type="primary" bindtap="onSubmit" block>提交申报</van-button>
+</view>
+</view>
+<van-toast id="van-toast" />

@@ -1,0 +1,18 @@
+<!--pages/teacher/launchlist.wxml-->
+<view class="page">
+  <van-button icon="plus" type="primary" size="small" bindtap="goToTeacherExamineAdd">发 起</van-button>
+  <view class="list">
+    <view wx:for="{{ list }}" class="list-item">
+      <view class="title">{{ item.teacher_examine_title}}</view>
+      <view class="status success" wx:if="{{item.status == 20}}">{{item.status_text}}</view>
+      <view class="status refuse" wx:elif="{{item.status == 30}}">{{item.status_text}}</view>
+      <view class="status" wx:else >{{item.status_text}}</view>
+      <view wx:if="{{ item.teacher_examine_type == 1}}" class="add score"> 加分</view>
+      <view wx:else class="reduce score"> 减分</view>
+      <view class="time">申报时间: {{item.start_time}}-{{item.end_time}}</view>
+      <view class="operation">
+        <van-button type="info" bindtap="goToTeacherExamineEdit" data-id="{{item.teacher_examine_id}}" size="small">修改</van-button>
+      </view>
+    </view>
+  </view>
+</view>

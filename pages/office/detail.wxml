@@ -1,0 +1,104 @@
+<!--pages/office/list.wxml-->
+
+<view class="container">
+  <van-cell-group title="公文信息">
+
+<van-cell title="标题：{{detail.document_circulation_title}}" />
+<van-cell title="接收编号: {{detail.document_circulation_received_no}}" />
+<van-cell title="文件编号: {{detail.document_circulation_file_no}}" />
+
+<van-cell title="文号: {{detail.document_circulation_no}}" />
+<van-cell title="来文机关: {{detail.document_circulation_department}}" />
+<van-cell title="来文部门: {{detail.document_circulation_institutional}}" />
+<van-cell title="下发途径: {{detail.document_circulation_channel}}" />
+<van-cell class="red" title="结办时限: {{detail.document_circulation_settle_time}}" />
+  </van-cell-group>
+<van-cell-group title="公文文件">
+  <van-cell wx:for="{{detail.files}}" title="{{item.name}}" bindtap="showFile" data-file="{{item.url}}"  is-link />
+</van-cell-group>
+<van-cell-group title="流程进度">
+
+<van-steps steps="{{ steps }}" active="{{ active }}"   direction="vertical"
+ />
+</van-cell-group>
+</view>
+<van-toast id="van-toast" />
+
+
+<view wx:if="{{detail.document_circulation_auditor_type == 2}}" class="operation-button">
+  <van-cell-group>
+  <van-field
+    value="{{ message }}"
+    label="意见"
+    type="textarea"
+    placeholder="请输入意见"
+    autosize
+    value="{{ idea }}"
+    border="{{ false }}"
+    bind:change="onChange"
+  >
+  <van-button bindtap="selectPhoto" slot="button" size="small" type="primary">
+      选择照片
+    </van-button>
+  </van-field>
+  <view wx:if="{{ endPhoto  != '' }}" style="padding-left:50rpx;position:relative;background: white; z-index: 9999;"> <image src="{{endPhoto}}"></image></view>
+</van-cell-group>
+  <van-button type="primary" bindtap="onFinish" block >结办</van-button>
+</view>
+
+<view wx:elif="{{detail.document_circulation_auditor_type == 1}}" class="operation-button">
+  <van-button class="button" type="primary" bindtap="showSingleSelectPopup" block >转办</van-button>
+  <van-button class="button" type="info" bindtap="showMultiSelectPopup" block>结办</van-button>
+</view>
+
+
+<van-popup show="{{ multiSelectShow }}"
+position="bottom"
+bind:close="onMultiSelectClose">
+  <van-tree-select
+    items="{{ multiSelectItem }}"
+    main-active-index="{{ multiSelectItemActiveIndex }}"
+    active-id="{{ activeMultiSelectItemId }}"
+    bind:click-nav="onClickMultiSelectItemNav"
+    bind:click-item="onClickMultiSelectItemItem"
+  />
+  <van-cell-group>
+  <van-field
+    value="{{ message }}"
+    label="意见"
+    type="textarea"
+    placeholder="请输入意见"
+        autosize
+    value="{{ idea }}"
+    border="{{ false }}"
+    bind:change="onChange"
+
+  />
+</van-cell-group>
+  <van-button type="primary" bindtap="onEnd" block>确认结办人</van-button>
+</van-popup>
+
+
+<van-popup show="{{ singleSelectShow }}"
+position="bottom"
+bind:close="onSingleSelectClose">
+  <van-tree-select
+    items="{{ singleSelectItem }}"
+    main-active-index="{{ singleSelectItemActiveIndex }}"
+    active-id="{{ activeSingleSelectItemId }}"
+    bind:click-nav="onClickSingleSelectItemNav"
+    bind:click-item="onClicKSingleSelectItemItem"
+  />
+  <van-cell-group>
+  <van-field
+    value="{{ message }}"
+    label="意见"
+    type="textarea"
+    placeholder="请输入意见"    autosize
+    value="{{ idea }}"
+    border="{{ false }}"
+    bind:change="onChange"
+  />
+</van-cell-group>
+  <van-button type="primary" bindtap="onNext" block>确认转办人</van-button>
+</van-popup>

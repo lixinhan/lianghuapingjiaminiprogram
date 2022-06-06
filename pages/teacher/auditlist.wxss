@@ -1,0 +1,66 @@
+/* pages/teacher/launchlist.wxss */
+.page{
+  padding:10rpx
+}
+.list-item{
+  padding: 5rpx;
+  margin-bottom: 80rpx;
+  overflow: hidden;
+  border-top: 1rpx solid #dbdbdb;
+  
+}
+.list-item .title{
+  position: relative;
+  float: left;
+  width: 570rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  line-height: 60rpx;
+}
+.list-item .status{
+  position: relative;
+  float: left;
+  width: 150rpx;
+  text-align: center;
+
+}
+.list-item .score{
+  position: relative;
+  float: left;
+  width: 100%;
+  font-size: 32rpx;
+  line-height: 40rpx;
+}
+.list-item .add{
+  color:green;
+}
+.list-item .reduce{
+  color:red;
+}
+.list-item .time{
+  position: relative;
+  float: left;
+  width: 100%;
+}
+.list-item .teacherList{
+  position: relative;
+  float: left;
+  width: 100%;
+}
+.list-item .operation{
+  position: relative;
+  float: right;
+}
+
+.list-item .operation van-button{
+  margin: 40rpx;
+}
+
+.success{
+  color:green;
+}
+
+.refuse{
+  color:red;
+}

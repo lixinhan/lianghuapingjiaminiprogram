@@ -1,0 +1,22 @@
+/* pages/teacher/applydetail.wxss */
+.page{
+  padding: 20rpx;
+}
+
+.title{
+  font-size: 40rpx;
+}
+.description{
+  text-indent: 2em;
+  margin: 10rpx;
+  color:#999999;
+}
+.sub_button{
+  margin-top: 40rpx;
+}
+.radio-item{
+  margin-top: 300rpx;
+}
+.radio-text{
+  float: left;
+}

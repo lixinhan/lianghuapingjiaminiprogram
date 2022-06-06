@@ -1,0 +1,8 @@
+/* pages/teacher/launch.wxss */
+.page{
+  width: 100%;
+  padding:10rpx
+}
+.addItemButton{
+  margin:10rpx;
+}
