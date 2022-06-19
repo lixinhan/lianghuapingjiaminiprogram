@@ -74,7 +74,8 @@
     "van-stepper": "./miniprogram_npm/@vant/weapp/stepper/index",
     "van-steps": "./miniprogram_npm/@vant/weapp/steps/index",
     "van-grid": "./miniprogram_npm/@vant/weapp/grid/index",
-    "van-grid-item": "./miniprogram_npm/@vant/weapp/grid-item/index"
+    "van-grid-item": "./miniprogram_npm/@vant/weapp/grid-item/index",
+    "van-search": "./miniprogram_npm/@vant/weapp/search/index"
 
   },
   "sitemapLocation": "sitemap.json"

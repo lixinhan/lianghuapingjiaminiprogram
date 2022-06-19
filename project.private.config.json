@@ -257,7 +257,28 @@
         {
           "name": "",
           "pathName": "pages/office/list",
-          "query": "document_circulation_id= 374404575697829888",
+          "query": "document_circulation_id= 377365343212929024",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/office/detail",
+          "query": "id=374757118642749440&auditor_id=374763495960346624",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/office/detail",
+          "query": "id=377365343212929024&auditor_id=377385269663367168",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/office/detail",
+          "query": "id=375803254388293632&auditor_id=375803254396682240",
           "launchMode": "default",
           "scene": null
         }

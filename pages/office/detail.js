@@ -1,6 +1,6 @@
 import { detail, end, finish, next, teacherList } from "../../api/office"
 import { endPhoto } from "../../api/upload";
-import { formatDate } from "../../utils/util";
+import { formatDate,formatTime } from "../../utils/util";
 
 import Toast from "../../miniprogram_npm/@vant/weapp/toast/toast";
 
@@ -14,7 +14,7 @@ Page({
     id:"",
     auditor_id:"",
     message:"",
-    endPhoto:"",
+    endPhoto:[],
     detail:[],
     active:"", 
     steps: [
@@ -30,7 +30,7 @@ Page({
     singleSelectItem:[],
     singleSelectItemActiveIndex:0,
     activeSingleSelectItemId:[],
-
+    photo:[]
   },
 
   /**
@@ -68,7 +68,7 @@ Page({
         this.setData({document_circulation_auditor_id:data.document_circulation_auditor_id})
         var steps=[];
         var active="";
-
+        var photo=[];
         for(var x in data.all){
           if(data.all[x].document_circulation_auditor_status==1){
               if(active==""){
@@ -80,9 +80,16 @@ Page({
             var desc=data.all[x].document_circulation_auditor_idea
           }
           steps.push({
-            text:"["+formatDate(new Date(data.all[x].document_circulation_auditor_update_time*1000))+"] "+data.all[x].teacher_name ,
+            text:"["+formatTime(new Date(data.all[x].document_circulation_auditor_update_time*1000))+"] "+data.all[x].teacher_name ,
             desc:desc
           })
+          
+          var photos=[];
+          if(data.all[x].document_circulation_auditor_photo!=""){
+            photos=data.all[x].document_circulation_auditor_photo.split(',')
+          }
+          photo=photo.concat(photos)
+          this.setData({photo})
         }
         if(active==""){
           this.setData({active:data.all.length})
@@ -149,23 +156,63 @@ Page({
   },
   showFile(event){
     var showMenu=true;
-    console.log(this.data.detail.document_circulation_file_can_download);
     if(this.data.detail.document_circulation_file_can_download== "2"){
       showMenu=false
     }
+    var platform="";
+    wx.getSystemInfo({
+      success:data=>{
+          platform=data.platform;
+      }
+    })
+    
+    let suffixArr = event.currentTarget.dataset.file.split(".");
+    let suffix = suffixArr[suffixArr.length - 1].toLocaleLowerCase();//获取文件地址后缀名
+
+    console.log(suffix)
+    console.log(wx.env.USER_DATA_PATH + '/'+ event.currentTarget.dataset.name)
+    if(suffix=='zip'){
+      if(platform=='windows' || platform=='mac'){
+      }else{
+        Toast.fail({message:"请使用电脑登录微信下载压缩文件.",duration:5000});
+        return false;
+      }
+    }
+
     wx.downloadFile({
       
       // 示例 url，并非真实存在
       url: event.currentTarget.dataset.file,
+      filePath: wx.env.USER_DATA_PATH + '/'+ event.currentTarget.dataset.name,
       success: function (res) {
-        const filePath = res.tempFilePath
-        wx.openDocument({
-          filePath: filePath,
-          showMenu:showMenu,
-          success: function (res) {
-            console.log('打开文档成功')
-          }
-        })
+        console.log(res)
+        const filePath = res.filePath
+        console.log(res.filePath,"临时文件地址")
+        const fs = wx.getFileSystemManager()
+        if(suffix=='zip'){
+              wx.saveFileToDisk({
+                filePath: filePath,
+                success(res) {
+                  console.log(res)
+                },
+                fail(res) {
+                  console.error(res)
+                }
+              })
+            
+        }else{
+          wx.openDocument({
+            filePath: filePath,
+            showMenu:showMenu,
+            success: function (res) {
+              console.log('打开文档成功')
+            }
+          })
+        }
+        
+
+        
+
       }
     })
   },
@@ -279,7 +326,7 @@ Page({
         data:{
           document_circulation_auditor_id:this.data.document_circulation_auditor_id,
           document_circulation_auditor_idea:this.data.message,
-          document_circulation_auditor_photo:this.data.endPhoto
+          document_circulation_auditor_photo:this.data.endPhoto.join(",")
         },
         success:responseData=>{
             var data=responseData.data;
@@ -300,25 +347,30 @@ Page({
     );  },
     selectPhoto(){
       wx.chooseImage({
-        count: 1,
+        count: 10,
         sizeType: ['original', 'compressed'],
         sourceType: ['album', 'camera'],
         success:res=> {
           // tempFilePath可以作为 img 标签的 src 属性显示图片
           const tempFilePaths = res.tempFilePaths
-          console.log(tempFilePaths)
-          var uploadTask=endPhoto({
-            filePath:tempFilePaths[0],
-            success:(response)=>{
-                console.log(response.data);
-                var data=JSON.parse(response.data)
-                console.log(data.data.http_path)
-                this.setData({
-                  endPhoto:data.data.http_path
-                })
+          for( var x  in tempFilePaths){
+            var uploadTask=endPhoto({
+              filePath:tempFilePaths[x],
+              success:(response)=>{
+                  console.log(response.data);
+                  var data=JSON.parse(response.data)
+                  console.log(data.data.http_path)
+                  var endPhoto=this.data.endPhoto;
+                  console.log("图片",endPhoto)
+                  endPhoto.push(data.data.http_path)
+                  this.setData({
+                    endPhoto:endPhoto
+                  })
+  
+              }
+          })
+          }
 
-            }
-        })
         }
       })
     }

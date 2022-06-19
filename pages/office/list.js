@@ -10,9 +10,41 @@ Page({
   data: {
     doList:[],
     undoList:[],
+    unauditList:[],
     active:0
   },
-
+  getList(title){
+    list({
+      data:{
+        document_circulation_title:title,
+        document_circulation_auditor_status:1,
+      },
+      success:reponseData=>{
+        var data=reponseData.data.data;
+        this.setData({unauditList:data})
+      }
+    })
+    list({
+      data:{
+        document_circulation_title:title,
+        document_circulation_auditor_status:2,
+      },
+      success:reponseData=>{
+        var data=reponseData.data.data;
+        this.setData({undoList:data})
+      }
+    })
+    list({
+      data:{
+        document_circulation_title:title,
+        document_circulation_status:3
+      },
+      success:reponseData=>{
+        var data=reponseData.data.data;
+        this.setData({doList:data})
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -24,32 +56,20 @@ Page({
           },
           success:responseData=>{
             var data=responseData.data.data;
-            if(data.document_circulation_auditor_status==""){
+            if(data.document_circulation_status==3){
+              this.setData({
+                active:2
+              })
+            }else if(data.document_circulation_auditor_id==""){
               this.setData({
                 active:1
               })
-            }           
+            }
+              
           }
         })
     }
-    list({
-      data:{
-        document_circulation_auditor_status:1
-      },
-      success:reponseData=>{
-        var data=reponseData.data.data;
-        this.setData({undoList:data})
-      }
-    })
-    list({
-      data:{
-        document_circulation_auditor_status:2
-      },
-      success:reponseData=>{
-        var data=reponseData.data.data;
-        this.setData({doList:data})
-      }
-    })
+    this.getList("");
     
     // wx.downloadFile({
     //   // 示例 url，并非真实存在
@@ -74,7 +94,6 @@ Page({
   onReady() {
 
   },
-
   /**
    * 生命周期函数--监听页面显示
    */
@@ -127,5 +146,11 @@ Page({
       url: '/pages/office/detail?'+query,
     })
 
+  },
+  onSearch(event){
+    this.getList(event.detail)
+  },
+  onCancel(){
+    this.getList();
   }
 })

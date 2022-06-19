@@ -1,6 +1,29 @@
 <!--pages/office/list.wxml-->
+<van-search
+  value="{{ value }}"
+  placeholder="请输入搜索关键词"
+  show-action
+  bind:search="onSearch"
+  bind:cancel="onCancel"
+/>
 <van-tabs active="{{ active }}" bind:change="onChange">
-  <van-tab title="待办">
+  <van-tab title="待批示">
+    <van-empty wx:if="{{unauditList.length==0}}" description="暂无数据" />
+<van-cell wx:for="{{unauditList}}" title="{{item.document_circulation_title}}" data-id="{{item.document_circulation_id}}" data-auditor_id="{{item.document_circulation_auditor_id}}"bindtap="goToDetail" use-label-slot border="{{ true }}" is-link>
+  <view slot="label">
+    <view class="van-cell-text">接收编号:{{item.document_circulation_received_no}}</view>
+    <view class="van-cell-text">文件编号:{{item.document_circulation_file_no}}</view>
+    <view class="van-cell-text">文号:{{item.document_circulation_no}}</view>
+    <view class="van-cell-text">来文机关:{{item.document_circulation_institutional}}</view>
+    <view class="van-cell-text">来文部门:{{item.document_circulation_department}}</view>
+    <view wx:if="{{item.next_teacher_name!=''}}" class="van-cell-text">待操作人:{{item.next_teacher_name}}</view>
+    <view class="red van-cell-text" wx:if="{{item.document_circulation_settle_time !='0000-00-00'}}">结办时限:{{item.document_circulation_settle_time}}</view>
+
+  </view>
+</van-cell>
+
+  </van-tab>
+  <van-tab title="待结办">
     <van-empty wx:if="{{undoList.length==0}}" description="暂无数据" />
 <van-cell wx:for="{{undoList}}" title="{{item.document_circulation_title}}" data-id="{{item.document_circulation_id}}" data-auditor_id="{{item.document_circulation_auditor_id}}"bindtap="goToDetail" use-label-slot border="{{ true }}" is-link>
   <view slot="label">
@@ -10,13 +33,13 @@
     <view class="van-cell-text">来文机关:{{item.document_circulation_institutional}}</view>
     <view class="van-cell-text">来文部门:{{item.document_circulation_department}}</view>
     <view wx:if="{{item.next_teacher_name!=''}}" class="van-cell-text">待操作人:{{item.next_teacher_name}}</view>
-    <view class="red van-cell-text">结办时限:{{item.document_circulation_settle_time}}</view>
+    <view class="red van-cell-text" wx:if="{{item.document_circulation_settle_time !='0000-00-00'}}">结办时限:{{item.document_circulation_settle_time}}</view>
 
   </view>
 </van-cell>
 
   </van-tab>
-  <van-tab title="已办">
+  <van-tab title="已结办">
     <van-empty wx:if="{{doList.length==0}}" description="暂无数据" />
 <van-cell wx:for="{{doList}}" title="{{item.document_circulation_title}}" data-id="{{item.document_circulation_id}}" data-auditor_id="{{item.document_circulation_auditor_id}}"bindtap="goToDetail" use-label-slot border="{{ true }}" is-link>
   <view slot="label">
@@ -25,7 +48,7 @@
     <view class="van-cell-text">文号:{{item.document_circulation_no}}</view>
     <view class="van-cell-text">来文机关:{{item.document_circulation_institutional}}</view>
     <view class="van-cell-text">来文部门:{{item.document_circulation_department}}</view>
-   <view class="red van-cell-text">结办时限:{{item.document_circulation_settle_time}}</view>
+    <view class="red van-cell-text" wx:if="{{item.document_circulation_settle_time !='0000-00-00'}}">结办时限:{{item.document_circulation_settle_time}}</view>
     <view wx:if="{{item.next_teacher_name!=''}}" class="van-cell-text">待操作人:{{item.next_teacher_name}}</view>
     <van-tag wx:if="{{item.document_circulation_status == 3}}" type="primary">已办结</van-tag>
     <van-tag wx:elif="{{ item.document_circulation_status == 2 }}" type="danger">待办结</van-tag>
